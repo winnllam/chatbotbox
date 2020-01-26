@@ -1,0 +1,23 @@
+h4 {
+  margin-top: 5px;
+  margin-bottom: 0;
+}
+
+p {
+  margin: 2px;
+}
+
+.container {
+  margin: 5px;
+  background-color: #282c34;
+}
+
+.title {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: top;
+  font-size: 30px;
+  color: white;
+}

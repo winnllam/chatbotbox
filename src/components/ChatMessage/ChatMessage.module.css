@@ -1,0 +1,29 @@
+h5 {
+  font-size: 14px;
+  margin-top: 10px;
+  margin-bottom: 0;
+  text-align: right;
+  float: right;
+  clear: right;
+}
+
+.userMsg {
+  max-width: 300px;
+  padding: 10px;
+  margin: 5px;
+  margin-right: 0;
+  border-radius: 10px;
+  text-align: right;
+  word-wrap: break-word;
+  background-color: #D3D3D3;
+  display: block;
+  float: right;
+  clear: right;
+}
+
+.timestamp {
+  font-size: 10px;
+  text-align: right;
+  float: right;
+  clear: right;
+}
