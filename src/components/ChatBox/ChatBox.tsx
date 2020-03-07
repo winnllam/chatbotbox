@@ -1,66 +1,47 @@
-import React from "react";
+import React, { memo, useRef, useEffect, useState, useCallback } from "react";
 import ChatMessage from "../ChatMessage/ChatMessage";
 import ChatInput from "../ChatInput/ChatInput";
 import styles from "./ChatBox.module.css";
+import { ChatMessageData } from "../../common/types";
+import { botName } from '../../common/constants';
 
-class ChatBox extends React.Component {
-  messagesEndRef: React.RefObject<HTMLDivElement>;
+const ChatBox = memo(() => {
+  const [messages, setMessages] = useState<ChatMessageData[]>([]);
 
-  constructor(props: any) {
-    super(props);
-    this.messagesEndRef = React.createRef();
-  }
+  const sendMessage = useCallback(
+    async (message: ChatMessageData) => {
+      setMessages(m => [...m, message]);
+    },
+    []
+  );
 
-  state = {
-    userId: Math.round(Math.random() * 1000000).toString(),
-    messages: []
-  };
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (messagesEndRef.current) {
+      messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [messages]);
 
-  sendMessage = (message: any) => {
-    console.log("sendMessage", message); //object
-    console.log(this.state.messages); //string array
-    this.setState({ messages: this.state.messages });
-  };
-
-  componentDidMount() {
-    this.scrollToBottom();
-  }
-  componentDidUpdate() {
-    this.scrollToBottom();
-  }
-  scrollToBottom = () => {
-    this.messagesEndRef.current!.scrollIntoView({ behavior: "smooth" });
-  };
-
-  render() {
-    const { sendMessage, state } = this; //pass props to respective components
-
-    return (
-      <div>
-        <div className={styles.chatBox}>
-          <h4>Assistant</h4>
-          <p>Hello, what's your name?</p>
-          <div>
-            {this.state.messages.map((m: any) => {
-              return (
-                <ChatMessage key={m.When} name={m.Who} time={m.When}>
-                  {m.What}
-                </ChatMessage>
-              );
-            })}
-          </div>
-          <div ref={this.messagesEndRef} />
-        </div>
-        <div>
-          <ChatInput
-            userId={state.userId}
-            messages={state.messages}
-            sendMessage={sendMessage}
-          />
-        </div>
+  return (
+    <div>
+      <div className={styles.chatBox}>
+        <ChatMessage
+          key={new Date().valueOf()}
+          name={botName}
+          time={new Date()}
+        >
+          Hello!
+        </ChatMessage>
+        {messages.map((m: any) => (
+          <ChatMessage key={m.time.valueOf()} name={m.id} time={m.time}>
+            {m.message}
+          </ChatMessage>
+        ))}
+        <div ref={messagesEndRef} />
       </div>
-    );
-  }
-}
+      <ChatInput sendMessage={sendMessage} />
+    </div>
+  );
+});
 
 export default ChatBox;
