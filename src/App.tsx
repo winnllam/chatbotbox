@@ -4,13 +4,13 @@ import ChatBox from "./components/ChatBox/ChatBox";
 
 const App: React.FC = () => {
   return (
-    <div className={styles.container}>
-      <header className={styles.title}>
-        <h3>
-          <code>Assistant Chat</code>
-        </h3>
-      </header>
-      <div>
+    <div className={styles.page}>
+      <div className={styles.container}>
+        <header className={styles.title}>
+          <h3>
+            <code>Assistant Chat</code>
+          </h3>
+        </header>
         <ChatBox />
       </div>
     </div>

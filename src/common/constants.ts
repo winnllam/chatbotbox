@@ -1,1 +1,1 @@
-export const botName: string = "JJ";
+export const botName: string = "Beep Boop";
