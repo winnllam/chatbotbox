@@ -8,7 +8,7 @@ const App: React.FC = () => {
       <div className={styles.container}>
         <header className={styles.title}>
           <h3>
-            <code>Assistant Chat</code>
+            <code>Chat Time</code>
           </h3>
         </header>
         <ChatBox />
