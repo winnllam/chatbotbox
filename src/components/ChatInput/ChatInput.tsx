@@ -18,7 +18,6 @@ const ChatInput = memo<InputProps>(({ sendMessage, name }) => {
     async (e: React.FormEvent) => {
       e.preventDefault();
 
-      console.log(name);
       const messageObj: ChatMessageData = {
         id: name,
         message: value,
