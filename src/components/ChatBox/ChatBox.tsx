@@ -7,6 +7,7 @@ import { botName } from "../../common/constants";
 
 const ChatBox = memo(() => {
   const [messages, setMessages] = useState<ChatMessageData[]>([]);
+  const [name, setName] = useState<string>('User');
 
   const fetchMessage = useCallback(async (message: ChatMessageData) => {
     const res = await fetch(`http://localhost:5000/query`, {
@@ -25,9 +26,15 @@ const ChatBox = memo(() => {
       setMessages(m => [...m, message]);
 
       const res = await fetchMessage(message);
+      let reply = res.reply;
+      if (Array.isArray(res.reply)){
+        reply = res.reply[0];
+        setName(res.reply[1]);
+      } 
+
       const replyObj: ChatMessageData = {
         id: botName,
-        message: res.reply,
+        message: reply,
         time: new Date()
       };
 
@@ -53,7 +60,7 @@ const ChatBox = memo(() => {
         ))}
         <div ref={messagesEndRef} />
       </div>
-      <ChatInput sendMessage={sendMessage} />
+      <ChatInput sendMessage={sendMessage} name={name} />
     </div>
   );
 });
