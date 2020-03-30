@@ -4,7 +4,7 @@ Chat box UI for Dialogflow
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+These instructions will get you a copy of the project up and running on your local machine for development.
 
 ### Prerequisites
 
@@ -25,7 +25,7 @@ Install the dependencies:
 yarn install
 ```
 
-Type in `yarn start` to see the chat UI at `localhost:3000`  
+Type in `yarn start` to see the chat UI at [localhost:3000](http://localhost:3000)
   
 The appearance of the chat box can be changed in `src/App.module.css` and `src/components/*/**.module.css`
 
