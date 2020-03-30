@@ -9,6 +9,7 @@ These instructions will get you a copy of the project up and running on your loc
 ### Prerequisites
 
 * Dialogflow agent created
+* Google Cloud SDK
 
 ### Installing
 
@@ -41,7 +42,12 @@ REACT_APP_CLIENT_EMAIL=<client-email>
 REACT_APP_PRIVATE_KEY=<private-key>
 ```
 
-Replace `<client-email>` and `<private-key>` with the client email and private key from the JSON file downloaded when setting up authentication.
+Replace `<client-email>` and `<private-key>` with the client email and private key from the JSON file downloaded when setting up authentication.  
+
+Use the same JSON file to run the following to be able to use the service account.
+```
+gcloud auth activate-service-account <client-email> --key-file="<path-to-json-file>"
+```
 
 ## Running the App
 
