@@ -15,8 +15,8 @@ const ChatMessage = memo<MessageProps>(({ name, time, children }) => {
     time.toLocaleDateString() + " at " + time.toLocaleTimeString();
   
   const showTime = useCallback(async () => {
-    setHidden(styles.timestamp);
-  }, []);
+    setHidden(hidden === styles.hideDate ? styles.timestamp : styles.hideDate);
+  }, [hidden]);
 
   return (
     <div onClick={showTime}>
