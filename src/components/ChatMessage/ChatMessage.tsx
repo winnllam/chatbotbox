@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React, { memo, useCallback, useState } from "react";
 import styles from "./ChatMessage.module.css";
 import { botName } from "../../common/constants";
 
@@ -9,17 +9,22 @@ interface MessageProps {
 }
 
 const ChatMessage = memo<MessageProps>(({ name, time, children }) => {
+  const [hidden, setHidden] = useState<String>(styles.hideDate);
   const style = name === botName ? styles.left : styles.right;
   const messageDateTime =
     time.toLocaleDateString() + " at " + time.toLocaleTimeString();
+  
+  const showTime = useCallback(async () => {
+    setHidden(hidden === styles.hideDate ? styles.timestamp : styles.hideDate);
+  }, [hidden]);
 
   return (
-    <div>
+    <div onClick={showTime}>
       <h5 className={style}>{name}</h5>
       <div className={`${styles.msg} ${style}`}>
         <p className={style}>{children}</p>
       </div>
-      <p className={`${styles.timestamp} ${style}`}>{messageDateTime}</p>
+      <p className={`${style} ${hidden}`}>{messageDateTime}</p>
     </div>
   );
 });

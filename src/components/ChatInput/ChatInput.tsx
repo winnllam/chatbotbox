@@ -4,9 +4,10 @@ import { ChatMessageData } from "../../common/types";
 
 interface InputProps {
   sendMessage: (message: any) => void;
+  name: string;
 }
 
-const ChatInput = memo<InputProps>(({ sendMessage }) => {
+const ChatInput = memo<InputProps>(({ sendMessage, name }) => {
   const [value, setValue] = useState('');
 
   const handleInput = useCallback((e: ChangeEvent<HTMLInputElement>) => {
@@ -18,7 +19,7 @@ const ChatInput = memo<InputProps>(({ sendMessage }) => {
       e.preventDefault();
 
       const messageObj: ChatMessageData = {
-        id: "User",
+        id: name,
         message: value,
         time: new Date()
       };
@@ -28,7 +29,7 @@ const ChatInput = memo<InputProps>(({ sendMessage }) => {
         setValue('');
       }
     },
-    [sendMessage, value]
+    [sendMessage, value, name]
   );
 
   return (

@@ -61,6 +61,10 @@ async function runQuery(message, projectId = "chat-bot-axlmpr") {
   } else {
     console.log(`  No intent matched.`);
   }
+  if ((result.parameters.fields)['given-name']) {
+    const name = (result.parameters.fields)['given-name'].stringValue;
+    return [result.fulfillmentText, name];
+  }
   return result.fulfillmentText;
 }
 
