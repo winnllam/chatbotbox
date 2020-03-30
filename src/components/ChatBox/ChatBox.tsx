@@ -29,7 +29,7 @@ const ChatBox = memo(() => {
       let reply = res.reply;
       if (Array.isArray(res.reply)){
         reply = res.reply[0];
-        setName(res.reply[1]);
+        setName(res.reply[1] !== '' ? res.reply[1] : 'User');
       } 
 
       const replyObj: ChatMessageData = {
