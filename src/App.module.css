@@ -15,7 +15,7 @@ p {
   height: 100%;
   display: flex;
   flex-flow: row wrap;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
 }
 
@@ -51,10 +51,11 @@ p {
 }
 
 .console {
-  width: 250px;
-  height: 200px;
-  margin: 20px;
-  background-color: white;
+  width: 300px;
+  height: 250px;
+  margin: 50px;
+  color: #4AF626;
+  background-color: black;
   border-radius: 10px;
   padding: 10px 15px;
   display: flex;
