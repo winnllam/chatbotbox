@@ -12,7 +12,10 @@ p {
 }
 
 .page {
-  height: 100%
+  margin-top: 50px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
 }
 
 .container {
@@ -23,8 +26,37 @@ p {
   align-content: center;
 }
 
-.title {
-  text-align: center;
-  font-size: 30px;
-  color: white;
+.chatBox {
+  width: 500px;
+  height: 500px;
+  margin: 20px;
+  background-color: white;
+  border-radius: 10px;
+  padding: 10px 15px;
+  display: flex;
+  flex-flow: column nowrap;
+  overflow-y: scroll;
+  position: block;
+}
+
+.chatBox::-webkit-scrollbar {
+  display: none;
+}
+
+.console {
+  width: 300px;
+  height: 250px;
+  margin: 50px;
+  color: #4AF626;
+  background-color: black;
+  border-radius: 10px;
+  padding: 10px 15px;
+  display: flex;
+  flex-flow: column nowrap;
+  overflow-y: scroll;
+  position: block;
+}
+
+.console::-webkit-scrollbar {
+  display: none;
 }
