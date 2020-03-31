@@ -11,9 +11,17 @@ interface ServerProps {
 const ServerConsole = memo<ServerProps>(({ input, output, children }) => {
   return (
     <div className={styles.log}>
-      <p><b>Input:</b> {input}</p>
-      <p><b>Output:</b> {output}</p>
-      <p><b>Intent:</b> {children}</p>
+      <code className={styles.terminalText}>
+        <p>
+          <b>Input:</b> {input}
+        </p>
+        <p>
+          <b>Output:</b> {output}
+        </p>
+        <p>
+          <b>Intent:</b> {children}
+        </p>
+      </code>
     </div>
   );
 });
