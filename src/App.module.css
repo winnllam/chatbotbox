@@ -12,11 +12,10 @@ p {
 }
 
 .page {
-  height: 100%;
+  margin-top: 50px;
   display: flex;
   flex-flow: row wrap;
-  justify-content: flex-end;
-  align-items: center;
+  justify-content: center;
 }
 
 .container {
@@ -25,12 +24,6 @@ p {
   flex-flow: column;
   justify-content: center;
   align-content: center;
-}
-
-.title {
-  text-align: center;
-  font-size: 30px;
-  color: white;
 }
 
 .chatBox {
