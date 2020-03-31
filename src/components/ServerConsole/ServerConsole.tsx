@@ -1,17 +1,19 @@
-import React, { memo, useRef, useEffect } from "react";
+import React, { memo } from "react";
 import styles from "./ServerConsole.module.css";
+import { queryData } from "../../common/types";
 
-const ServerConsole = memo(() => {
-  const endRef = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    if (endRef.current) {
-      endRef.current.scrollIntoView({ behavior: "smooth" });
-    }
-  }, []);
+interface ServerProps {
+  input: string;
+  output: string;
+  children: queryData[];
+}
 
+const ServerConsole = memo<ServerProps>(({ input, output, children }) => {
   return (
-    <div className={styles.console}>
-      <div ref={endRef} />
+    <div className={styles.log}>
+      <p><b>Input:</b> {input}</p>
+      <p><b>Output:</b> {output}</p>
+      <p><b>Intent:</b> {children}</p>
     </div>
   );
 });

@@ -56,16 +56,20 @@ async function runQuery(message, projectId = "chat-bot-axlmpr") {
   const result = responses[0].queryResult;
   console.log(`  Query: ${result.queryText}`);
   console.log(`  Response: ${result.fulfillmentText}`);
+
+  let query = [result.queryText, result.fulfillmentText];
   if (result.intent) {
     console.log(`  Intent: ${result.intent.displayName}`);
+    query.push(result.intent.displayName);
   } else {
     console.log(`  No intent matched.`);
+    query.push('No intent');
   }
+
   if ((result.parameters.fields)['given-name']) {
-    const name = (result.parameters.fields)['given-name'].stringValue;
-    return [result.fulfillmentText, name];
+    query.push((result.parameters.fields)['given-name'].stringValue);
   }
-  return result.fulfillmentText;
+  return query;
 }
 
 app.listen(port, () => {

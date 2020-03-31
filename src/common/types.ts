@@ -3,3 +3,10 @@ export interface ChatMessageData {
   message: string;
   time: Date;
 }
+
+export interface queryData {
+  queryText: string;
+  fulfillmentText: string;
+  intent: string;
+  time: Date;
+}

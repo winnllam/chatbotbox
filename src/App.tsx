@@ -3,12 +3,13 @@ import ChatMessage from "./components/ChatMessage/ChatMessage";
 import ChatInput from "./components/ChatInput/ChatInput";
 import ServerConsole from "./components/ServerConsole/ServerConsole";
 import styles from "./App.module.css";
-import { ChatMessageData } from "./common/types";
+import { ChatMessageData, queryData } from "./common/types";
 import { botName } from "./common/constants";
 
 const App: React.FC = () => {
   const [messages, setMessages] = useState<ChatMessageData[]>([]);
   const [name, setName] = useState<string>("User");
+  const [query, setQuery] = useState<queryData[]>([]);
 
   const fetchMessage = useCallback(async (message: ChatMessageData) => {
     const res = await fetch(`http://localhost:5000/query`, {
@@ -28,18 +29,24 @@ const App: React.FC = () => {
 
       const res = await fetchMessage(message);
       let reply = res.reply;
-      if (Array.isArray(res.reply)) {
-        reply = res.reply[0];
-        setName(res.reply[1] !== "" ? res.reply[1] : "User");
+      if (res.reply[3] !== undefined) {
+        setName(res.reply[3] !== "" ? res.reply[3] : "User");
       }
 
       const replyObj: ChatMessageData = {
         id: botName,
-        message: reply,
+        message: reply[1],
         time: new Date()
       };
-
       setMessages(m => [...m, replyObj]);
+
+      const queryObj: queryData = {
+        queryText: reply[0],
+        fulfillmentText: reply[1],
+        intent: reply[2],
+        time: new Date()
+      };
+      setQuery(q => [...q, queryObj]);
     },
     [fetchMessage]
   );
@@ -50,6 +57,13 @@ const App: React.FC = () => {
       messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
     }
   }, [messages]);
+
+  const queryEndRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (queryEndRef.current) {
+      queryEndRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [query]);
 
   return (
     <div className={styles.page}>
@@ -69,7 +83,14 @@ const App: React.FC = () => {
         </div>
         <ChatInput sendMessage={sendMessage} name={name} />
       </div>
-      <ServerConsole />
+      <div className={styles.console}>
+        {query.map((q: any) => (
+          <ServerConsole key={q.time.valueOf()} input={q.queryText} output={q.fulfillmentText}>
+            {q.intent}
+          </ServerConsole>
+        ))}
+        <div ref={queryEndRef} />
+      </div>
     </div>
   );
 };
