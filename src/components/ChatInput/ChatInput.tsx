@@ -42,9 +42,6 @@ const ChatInput = memo<InputProps>(({ sendMessage, name }) => {
         onChange={handleInput}
         autoComplete="off"
       ></input>
-      <button type="submit" className={styles.submitBtn}>
-        Send
-      </button>
     </form>
   );
 });
