@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState, useCallback } from "react";
 import ChatMessage from "./components/ChatMessage/ChatMessage";
 import ChatInput from "./components/ChatInput/ChatInput";
+import ConversationTabs from './components/ConversationTabs/ConversationTabs';
 import ServerConsole from "./components/ServerConsole/ServerConsole";
 import styles from "./App.module.css";
 import { ChatMessageData, queryData } from "./common/types";
@@ -67,6 +68,11 @@ const App: React.FC = () => {
 
   return (
     <div className={styles.page}>
+      <div className={styles.tabsBg}>
+        <ConversationTabs key='1' name='Profile Bot'>
+          recent message recent message recent message recent message recent message recent message recent message recent message recent message
+        </ConversationTabs>
+      </div>
       <div className={styles.container}>
         <div className={styles.chatBox}>
           {messages.map((m: any) => (

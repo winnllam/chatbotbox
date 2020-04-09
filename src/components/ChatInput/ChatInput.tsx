@@ -8,7 +8,7 @@ interface InputProps {
 }
 
 const ChatInput = memo<InputProps>(({ sendMessage, name }) => {
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState("");
 
   const handleInput = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     setValue(e.currentTarget.value);
@@ -21,12 +21,12 @@ const ChatInput = memo<InputProps>(({ sendMessage, name }) => {
       const messageObj: ChatMessageData = {
         id: name,
         message: value,
-        time: new Date()
+        time: new Date(),
       };
 
       if (value !== "") {
         sendMessage(messageObj);
-        setValue('');
+        setValue("");
       }
     },
     [sendMessage, value, name]

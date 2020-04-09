@@ -1,0 +1,28 @@
+.tab {
+  height: 50px;
+  padding: 10px;
+  border-bottom: 1px solid gray;
+}
+
+.inactive {
+  background-color: white;
+}
+
+.active {
+  background-color: #f1f1f1;
+}
+
+.botName {
+  font-size: 15px;
+}
+
+.textBox {
+  height: 15px;
+  margin: 10px 0;
+  overflow: hidden;
+}
+
+.recent {
+  font-size: 10px;
+  color: gray;
+}
