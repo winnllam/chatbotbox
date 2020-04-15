@@ -1,3 +1,5 @@
+![alt text](https://github.com/winnllam/chatbotbox/blob/master/public/chatbotbox.png)
+
 # Chatbotbox
 
 Chat box UI for Dialogflow
