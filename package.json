@@ -27,8 +27,7 @@
     "start": "react-scripts start",
     "server": "node src/server",
     "build": "react-scripts build",
-    "dev": "concurrently \"yarn start\" \"yarn server\"",
-    "heroku-postbuild": "cd client && npm install && npm run build"
+    "dev": "concurrently \"yarn start\" \"yarn server\""
   },
   "eslintConfig": {
     "extends": "react-app"
