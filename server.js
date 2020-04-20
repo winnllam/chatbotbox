@@ -29,9 +29,13 @@ app.use(function (req, res, next) {
 });
 
 app.post("/query", (req, res) => {
-  runQuery(req.body.message.message).then((data) => {
-    res.send({ reply: data });
-  });
+  try {
+    runQuery(req.body.message.message).then((data) => {
+      res.send({ reply: data });
+    });
+  } catch {
+    console.log("Query failed");
+  }
 });
 
 async function runQuery(message, projectId = "chat-bot-axlmpr") {
