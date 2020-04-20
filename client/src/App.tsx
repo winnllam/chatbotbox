@@ -12,20 +12,20 @@ const App: React.FC = () => {
   const [query, setQuery] = useState<queryData[]>([]);
 
   const fetchMessage = useCallback(async (message: ChatMessageData) => {
-    const res = await fetch(`http://localhost:5000/query`, {
+    const res = await fetch(`/query`, {
       method: "POST",
       headers: new Headers({
         Accept: "application/json",
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       }),
-      body: JSON.stringify({ message })
+      body: JSON.stringify({ message }),
     });
     return res.json();
   }, []);
 
   const sendMessage = useCallback(
     async (message: ChatMessageData) => {
-      setMessages(m => [...m, message]);
+      setMessages((m) => [...m, message]);
 
       const res = await fetchMessage(message);
       let reply = res.reply;
@@ -36,17 +36,17 @@ const App: React.FC = () => {
       const replyObj: ChatMessageData = {
         id: botName,
         message: reply[1],
-        time: new Date()
+        time: new Date(),
       };
-      setMessages(m => [...m, replyObj]);
+      setMessages((m) => [...m, replyObj]);
 
       const queryObj: queryData = {
         queryText: reply[0],
         fulfillmentText: reply[1],
         intent: reply[2],
-        time: new Date()
+        time: new Date(),
       };
-      setQuery(q => [...q, queryObj]);
+      setQuery((q) => [...q, queryObj]);
     },
     [fetchMessage]
   );
@@ -80,7 +80,11 @@ const App: React.FC = () => {
       </div>
       <div className={styles.console}>
         {query.map((q: any) => (
-          <ServerConsole key={q.time.valueOf()} input={q.queryText} output={q.fulfillmentText}>
+          <ServerConsole
+            key={q.time.valueOf()}
+            input={q.queryText}
+            output={q.fulfillmentText}
+          >
             {q.intent}
           </ServerConsole>
         ))}
