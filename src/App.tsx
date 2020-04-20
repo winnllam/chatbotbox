@@ -12,7 +12,7 @@ const App: React.FC = () => {
   const [query, setQuery] = useState<queryData[]>([]);
 
   const fetchMessage = useCallback(async (message: ChatMessageData) => {
-    const res = await fetch(`https://chatbotbox.herokuapp.com/query`, {
+    const res = await fetch(`https://chatbotbox.herokuapp.com:5000/query`, {
       method: "POST",
       headers: new Headers({
         Accept: "application/json",
