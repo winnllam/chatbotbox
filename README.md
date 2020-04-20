@@ -27,7 +27,7 @@ Install the dependencies:
 yarn install
 ```
 
-Type in `yarn start` to see the chat UI at [localhost:3000](http://localhost:3000)
+Type in `yarn start` in the client folder to see the chat UI at [localhost:3000](http://localhost:3000)
   
 The appearance of the chat box can be changed in `src/App.module.css` and `src/components/*/**.module.css`
 
@@ -40,11 +40,12 @@ To get a reply back from your Dialogflow agent, you'll need to get the **Service
 Create a `.env` file and add the following:
 
 ```
+REACT_APP_PROJECT_ID=<project-id>
 REACT_APP_CLIENT_EMAIL=<client-email>
 REACT_APP_PRIVATE_KEY=<private-key>
 ```
 
-Replace `<client-email>` and `<private-key>` with the client email and private key from the JSON file downloaded when setting up authentication.  
+Replace `<project-id>`,`<client-email>` and `<private-key>` with the project id, client email and private key from the JSON file downloaded when setting up authentication.  
 
 Use the same JSON file to run the following to be able to use the service account.
 ```
@@ -56,8 +57,9 @@ gcloud auth activate-service-account <client-email> --key-file="<path-to-json-fi
 To run the backend calling to Dialogflow and the frontend UI:
 
 ```
-yarn run dev
+yarn start
 ```
+in the root folder, at [localhost:5000](http://localhost:5000)
 
 Now you can converse with your bot!
 
