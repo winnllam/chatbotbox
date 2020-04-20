@@ -12,7 +12,8 @@ const App: React.FC = () => {
   const [query, setQuery] = useState<queryData[]>([]);
 
   const fetchMessage = useCallback(async (message: ChatMessageData) => {
-    const res = await fetch(`https://chatbotbox.herokuapp.com:5000/query`, {
+    const port = process.env.PORT || 5000;
+    const res = await fetch(`https://chatbotbox.herokuapp.com:${port}/query`, {
       method: "POST",
       headers: new Headers({
         Accept: "application/json",
