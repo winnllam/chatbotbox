@@ -24,8 +24,8 @@
     "uuid": "^7.0.2"
   },
   "scripts": {
-    "start": "react-scripts start",
     "server": "node src/server",
+    "start": "concurrently \"react-scripts start\" \"yarn server\"",
     "build": "react-scripts build",
     "dev": "concurrently \"yarn start\" \"yarn server\""
   },
