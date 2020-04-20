@@ -3,16 +3,14 @@ const uuid = require("uuid");
 const express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
-const app = express();
+const app = express().use(bodyParser.json());
 const port = process.env.PORT || 5000;
 
 const sessionId = uuid.v4();
 
-//require("dotenv").config();
+require("dotenv").config();
 
 app.use(express.static(path.join(__dirname, "client/build")));
-
-app.use(bodyParser.json());
 
 app.use(function (req, res, next) {
   res.setHeader("Access-Control-Allow-Origin", "*");
