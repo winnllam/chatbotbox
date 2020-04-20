@@ -2,8 +2,14 @@
   "name": "chatbotbox",
   "version": "0.1.0",
   "private": true,
-  "main": "server.js",
   "dependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "@types/jest": "^24.0.0",
+    "@types/node": "^12.0.0",
+    "@types/react": "^16.9.0",
+    "@types/react-dom": "^16.9.0",
     "body-parser": "^1.19.0",
     "concurrently": "^5.1.0",
     "cors": "^2.8.5",
@@ -11,12 +17,19 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "google-auth-library": "^6.0.0",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-scripts": "3.4.0",
+    "typescript": "~3.7.2",
     "uuid": "^7.0.2"
   },
   "scripts": {
-    "start": "node server.js",
-    "heroku-postbuild": "cd client && yarn install && yarn run build"
+    "server": "node src/server",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "dev": "concurrently \"yarn start\" \"yarn server\""
   },
+  "proxy": "http://127.0.0.1:5000",
   "eslintConfig": {
     "extends": "react-app"
   },

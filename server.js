@@ -2,10 +2,15 @@ const dialogflow = require("dialogflow");
 const uuid = require("uuid");
 const express = require("express");
 const bodyParser = require("body-parser");
+const path = require("path");
 const app = express();
 const port = process.env.PORT || 5000;
 
 const sessionId = uuid.v4();
+
+//require("dotenv").config();
+
+app.use(express.static(path.join(__dirname, "client/build")));
 
 app.use(bodyParser.json());
 
@@ -29,7 +34,7 @@ app.post("/query", (req, res) => {
   });
 });
 
-async function runQuery(message, projectId = "chat-bot-axlmpr") {
+async function runQuery(message, projectId = process.env.REACT_APP_PROJECT_ID) {
   let config = {
     credentials: {
       private_key: process.env.REACT_APP_PRIVATE_KEY,
@@ -69,6 +74,10 @@ async function runQuery(message, projectId = "chat-bot-axlmpr") {
   }
   return query;
 }
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname + "/client/build/index.html"));
+});
 
 app.listen(port, () => {
   console.log("Running on port " + port);
