@@ -1,4 +1,4 @@
-![alt text](https://github.com/winnllam/chatbotbox/blob/master/public/chatbotbox.png)
+![alt text](https://github.com/winnllam/chatbotbox/blob/master/client/public/chatbotbox.png)
 
 # Chatbotbox
 
@@ -21,10 +21,16 @@ Clone the repo:
 git clone https://github.com/winnllam/chatbotbox.git
 ```
 
-Install the dependencies:
+Install the dependencies in root and client folder:
 
 ```
 yarn install
+```
+
+or 
+
+```
+npm install
 ```
 
 Type in `yarn start` in the client folder to see the chat UI at [localhost:3000](http://localhost:3000)
