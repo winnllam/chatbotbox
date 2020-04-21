@@ -21,7 +21,8 @@ Clone the repo:
 git clone https://github.com/winnllam/chatbotbox.git
 ```
 
-Install the dependencies in root and client folder:
+
+Install the dependencies in both root and client folder:
 
 ```
 yarn install
@@ -31,6 +32,12 @@ or
 
 ```
 npm install
+```
+
+Also create the build folder in client:
+
+```
+yarn build
 ```
 
 Type in `yarn start` in the client folder to see the chat UI at [localhost:3000](http://localhost:3000)
