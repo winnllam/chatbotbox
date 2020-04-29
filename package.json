@@ -14,6 +14,7 @@
     "uuid": "^7.0.2"
   },
   "scripts": {
+    "startup": "sh install.sh",
     "start": "node server.js",
     "heroku-postbuild": "cd client && yarn install && yarn run build"
   },
